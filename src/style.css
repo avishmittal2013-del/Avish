@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom Animations & Interactions */
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 4px var(--glow-color), 0 0 12px var(--glow-color);
+    box-shadow: 0 0 8px var(--glow-color);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--glow-color), 0 0 24px var(--glow-color);
+    box-shadow: 0 0 16px var(--glow-color);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-thumb);
+  border-radius: 9999px;
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-thumb-hover);
+}
+
+/* Base custom variables that respond to dark/light modes */
+:root {
+  --color-bg: #f8fafc;
+  --color-thumb: #cbd5e1;
+  --color-thumb-hover: #94a3b8;
+  --glow-color: rgba(99, 102, 241, 0.4);
+}
+
+.dark {
+  --color-bg: #030712;
+  --color-thumb: #374151;
+  --color-thumb-hover: #4b5563;
+  --glow-color: rgba(99, 102, 241, 0.6);
+}
+
+/* Scroll-Spy smooth behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Utility Classes */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Glowing text and buttons */
+.glow-primary {
+  --glow-color: rgba(99, 102, 241, 0.5);
+  animation: pulseGlow 3s infinite;
+}
+
+.glow-emerald {
+  --glow-color: rgba(16, 185, 129, 0.5);
+  animation: pulseGlow 3s infinite;
+}
+
+/* Navigation Line indicator */
+.nav-active {
+  color: var(--color-active-link, #4f46e5);
+}
+
+.dark .nav-active {
+  color: var(--color-active-link-dark, #818cf8);
+}
+
+/* Typing animation cursor overlay */
+.typing-cursor::after {
+  content: "|";
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Task card wiggle effects */
+.drag-hover {
+  border-style: dashed !important;
+  border-color: #6366f1 !important;
+  background-color: rgba(99, 102, 241, 0.05) !important;
+}
+
+/* Custom custom transitions */
+.transition-all-300 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

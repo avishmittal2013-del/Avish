@@ -1,0 +1,6 @@
+{
+  "name": "Static Portfolio Website",
+  "description": "A premium static landing page, portfolio, and interactive lab built using pure vanilla HTML, CSS, and JS. Smooth, beautiful, and deploy-ready for GitHub Pages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

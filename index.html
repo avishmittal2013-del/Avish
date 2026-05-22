@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static Developer Portfolio & Interactive Lab</title>
+    <!-- Google Fonts: Inter for general UI & Space Grotesk for Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link Stylesheet -->
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 min-h-screen transition-colors duration-300 font-sans antialiased text-base">
+
+    <!-- FRONT-END HEADER AND glass STICKY BAR -->
+    <header class="fixed top-0 left-0 right-0 z-40 border-b border-slate-200/80 dark:border-slate-800/60 bg-slate-50/80 dark:bg-slate-950/80 glass-effect transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center space-x-2 group h-10 select-none">
+          <div class="h-8 w-8 rounded-lg bg-indigo-600 dark:bg-indigo-500 flex items-center justify-center font-mono font-bold text-white shadow-sm shadow-indigo-500/25 group-hover:scale-105 transition-transform duration-300">LP</div>
+          <span class="font-sans font-bold text-lg tracking-tight text-slate-900 dark:text-white">Lucid<span class="text-indigo-600 dark:text-indigo-400 font-medium">Pages</span></span>
+        </a>
+
+        <!-- Desktop Navigation Bar Links -->
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <a href="#home" class="nav-spy-target text-slate-600 dark:text-slate-350 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Home</a>
+          <a href="#about" class="nav-spy-target text-slate-600 dark:text-slate-350 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About</a>
+          <a href="#skills" class="nav-spy-target text-slate-600 dark:text-slate-350 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Skills</a>
+          <a href="#projects" class="nav-spy-target text-slate-600 dark:text-slate-350 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Projects</a>
+          <a href="#timeline" class="nav-spy-target text-slate-600 dark:text-slate-350 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Experience</a>
+          <a href="#contact" class="nav-spy-target text-slate-600 dark:text-slate-350 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Dynamic UI Toggle -->
+        <div class="flex items-center space-x-4">
+          <button id="theme-toggle-btn" class="h-9 px-3 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900 transition-all text-xs font-mono font-semibold tracking-wide flex items-center space-x-2 select-none cursor-pointer" title="Switch Page Appearance">
+            <!-- Sun Icon -->
+            <svg id="theme-icon-sun" class="h-4 w-4 text-indigo-600 dark:text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            <!-- Moon Icon -->
+            <svg id="theme-icon-moon" class="h-4 w-4 text-indigo-400 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            <span id="theme-text" class="text-slate-700 dark:text-slate-300">LIGHT VISUAL</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: HERO HOME PROFILE AND REALCLOCK -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col justify-center min-h-[92vh]">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Content Column -->
+        <div class="lg:col-span-7 flex flex-col space-y-6">
+          
+          <!-- clock readout banner -->
+          <div class="inline-flex items-center space-x-2 py-1 px-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full w-fit shadow-xs">
+            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium">LIVE CLOCK:</span>
+            <div id="hero-dynamic-clock" class="text-xs font-mono">--:--:-- (UTC)</div>
+          </div>
+
+          <!-- Greeting -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-950 dark:text-white leading-none">
+            <span id="hero-greeting" class="block font-medium text-slate-500 dark:text-slate-400 text-lg sm:text-xl font-mono uppercase tracking-widest mb-3">Hi,</span>
+            I build elegant <br class="hidden sm:inline">
+            <span class="text-indigo-600 dark:text-indigo-400 typing-cursor" id="typing-carousel-item">Frontend Designs</span>
+          </h1>
+
+          <!-- Tagline description -->
+          <p class="max-w-xl text-lg text-slate-600 dark:text-slate-350 leading-relaxed font-light">
+            Crafting fluid layouts, responsive interfaces, and client-side applications. Fully compiled using optimized modern assets—100% server-free and prepared for high-speed delivery.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap gap-4 pt-1">
+            <a href="#contact" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2 cursor-pointer">
+              <span>Connect with me</span>
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+            <a href="#projects" class="px-6 py-3 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-800 dark:text-stone-200 border border-slate-200 dark:border-slate-800 font-medium text-sm rounded-xl transition-all hover:border-indigo-400 dark:hover:border-indigo-800 flex items-center justify-center">
+              Explore Interactive Lab
+            </a>
+          </div>
+        </div>
+
+        <!-- Abstract Graphics Visual -->
+        <div class="lg:col-span-5 relative flex justify-center items-center">
+          <!-- Backdrop SVG Circle decorative -->
+          <div class="absolute -z-10 h-64 w-64 md:h-80 md:w-80 rounded-full bg-indigo-500/10 blur-3xl"></div>
+          
+          <div class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl p-6 shadow-xl max-w-sm w-full transition-transform hover:scale-[1.02] duration-300 animate-float">
+            <!-- Code terminal look layout -->
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 mb-4">
+              <div class="flex space-x-1.5">
+                <span class="h-3 w-3 rounded-full bg-rose-500"></span>
+                <span class="h-3 w-3 rounded-full bg-amber-500"></span>
+                <span class="h-3 w-3 rounded-full bg-green-500"></span>
+              </div>
+              <span class="font-mono text-xs text-slate-400">static_index.html</span>
+            </div>
+            
+            <div class="font-mono text-xs text-slate-500 space-y-2">
+              <p><span class="text-indigo-600 dark:text-indigo-400">&lt;div</span> <span class="text-amber-600">class</span>=<span class="text-emerald-600">"portfolio"</span><span class="text-indigo-600 dark:text-indigo-400">&gt;</span></p>
+              <p class="pl-4"><span class="text-indigo-600 dark:text-indigo-400">&lt;h1&gt;</span>Static Pages Only&lt;/h1&gt;</p>
+              <p class="pl-4 text-slate-400">// Lightning-fast load</p>
+              <p class="pl-4 text-slate-400">// Clean design alignment</p>
+              <p class="pl-4"><span class="text-indigo-600 dark:text-indigo-400">&lt;p</span> <span class="text-amber-600">id</span>=<span class="text-emerald-600">"status"</span><span class="text-indigo-600 dark:text-indigo-400">&gt;</span>Deploy Ready&lt;/p&gt;</p>
+              <p><span class="text-indigo-600 dark:text-indigo-400">&lt;/div&gt;</span></p>
+            </div>
+            
+            <div class="mt-6 border-t border-slate-100 dark:border-slate-800 pt-4 flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <div class="h-2 w-2 rounded-full bg-emerald-500"></div>
+                <span class="text-[10px] font-mono text-slate-400">GITHUB PAGES INTEGRITY</span>
+              </div>
+              <span class="text-[10px] font-mono px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded font-medium">100% Pure Static</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: ABOUT THE CODER -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200/60 dark:border-slate-900/60 bg-slate-100/30 dark:bg-slate-950/25">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">THE MANIFESTO</span>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">Design Philosophies</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">The architecture values that guide each web page and layout iteration.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl shadow-xs hover:border-indigo-500 transition-all duration-300">
+            <div class="h-10 w-10 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-xl flex items-center justify-center mb-4">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-950 dark:text-white mb-2">High Execution Speed</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+              Every millisecond counts. By minimizing bloated custom libraries and relying on semantic inline assets, the application retains small payloads and renders in microseconds.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl shadow-xs hover:border-indigo-500 transition-all duration-300">
+            <div class="h-10 w-10 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-xl flex items-center justify-center mb-4">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-950 dark:text-white mb-2">Absolute Accessibility</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+              Structured elements built on unified color scales provide proper high contrast margins. Readable typographies paired with intuitive layout workflows ensure inclusive target views.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl shadow-xs hover:border-indigo-500 transition-all duration-300">
+            <div class="h-10 w-10 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-xl flex items-center justify-center mb-4">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-950 dark:text-white mb-2">Vanilla Reliability</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+              Zero dependency-rot. Utilizing direct JavaScript APIs without complex reactive lifecycles ensures that static code written today runs stably for a lifetime without configuration updates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SKILLS METERS BENTO GRID -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">CAPABILITIES</span>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">Skills Bento Directory</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Dynamic meters loading automatically on window viewport intersect paths.</p>
+      </div>
+
+      <!-- Grid target populated dynamically via Javascript -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="skills-bento-grid">
+        <!-- Render placeholder elements during startup -->
+        <div class="p-6 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl h-32 animate-pulse"></div>
+        <div class="p-6 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl h-32 animate-pulse"></div>
+        <div class="p-6 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl h-32 animate-pulse"></div>
+        <div class="p-6 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl h-32 animate-pulse"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PROJECTS SHOWCASE GRID (AND SEARCH CODES) -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200/60 dark:border-slate-950/30 bg-slate-100/10 dark:bg-slate-900/10">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">WORK SHOWCASE</span>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">Interactive Showcase Studio</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Discover actual working sub-applications embedded directly inside the portfolio template.</p>
+        </div>
+
+        <!-- Filter Controls Toolbars -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 p-4 rounded-2xl shadow-xs">
+          <!-- Text Search Bar Input -->
+          <div class="relative w-full md:w-80">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </span>
+            <input type="text" id="project-search-bar" class="w-full pl-9 pr-4 py-2 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-sm rounded-xl focus:border-indigo-400 focus:outline-hidden text-slate-800 dark:text-slate-100 transition-colors" placeholder="Search keywords (e.g. Canvas)...">
+          </div>
+
+          <!-- Quick category buttons -->
+          <div class="flex items-center space-x-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+            <button class="project-filter-btn px-4 py-2 text-xs font-mono font-bold rounded-lg bg-indigo-600 text-white dark:bg-indigo-500 cursor-pointer transition-all uppercase tracking-wide shrink-0" data-filter="all">
+              ALL WORK
+            </button>
+            <button class="project-filter-btn px-4 py-2 text-xs font-mono font-bold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 cursor-pointer transition-all uppercase tracking-wide shrink-0" data-filter="utilities">
+              UTILITIES
+            </button>
+            <button class="project-filter-btn px-4 py-2 text-xs font-mono font-bold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 cursor-pointer transition-all uppercase tracking-wide shrink-0" data-filter="experiments">
+              EXPERIMENTS
+            </button>
+          </div>
+        </div>
+
+        <!-- Render Target for Portfolio Projects in JavaScript -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-showcase-grid">
+          <!-- Placeholder elements -->
+          <div class="h-64 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 animate-pulse"></div>
+          <div class="h-64 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 animate-pulse"></div>
+          <div class="h-64 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 animate-pulse"></div>
+        </div>
+
+        <!-- EMBEDDED WIDGET 1: APEX KANBAN BLOCK -->
+        <div id="demo-apex-kanban" class="mt-20 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-md">
+          <div class="p-6 sm:p-8 border-b border-slate-200/80 dark:border-slate-800/85 bg-slate-50/50 dark:bg-slate-900/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="inline-flex items-center space-x-2 py-0.5 px-2 bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900 rounded text-[10px] font-mono text-indigo-700 dark:text-indigo-400 uppercase tracking-widest font-semibold mb-2">EMBEDDED APPLICATION 01</div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Apex Local Canvas Board</h3>
+              <p class="text-xs text-slate-400 dark:text-slate-500 mt-1">Experience live task management. Your tasks save automatically in localStorage.</p>
+            </div>
+            
+            <!-- Quick task submission form -->
+            <form id="kb-task-form" class="flex flex-wrap items-center gap-2">
+              <input type="text" id="kb-task-input" class="px-3 py-2 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs rounded-lg focus:outline-hidden focus:border-indigo-400 dark:text-slate-100" placeholder="New Task Description..." required>
+              <select id="kb-task-priority" class="px-3 py-2 text-xs border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-350 rounded-lg focus:outline-hidden">
+                <option value="low">Low priority</option>
+                <option value="medium" selected>Medium Priority</option>
+                <option value="high">High Priority</option>
+              </select>
+              <button type="submit" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold cursor-pointer select-none transition-all shadow-sm">
+                + Add Task
+              </button>
+            </form>
+          </div>
+
+          <!-- Kanban grid columns -->
+          <div class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 bg-slate-50/20 dark:bg-slate-950">
+            <!-- Col 1: Todo -->
+            <div class="bg-slate-100/40 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-850 rounded-2xl p-4 flex flex-col space-y-3 min-h-[300px]">
+              <div class="flex items-center justify-between pb-2 border-b border-slate-150 dark:border-slate-800/80 mb-1">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Todo backlog</span>
+                <span id="kb-count-todo" class="px-2 py-0.5 text-[10px] font-mono leading-none bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full font-bold">0</span>
+              </div>
+              <div class="flex flex-col space-y-3 flex-1" id="kb-col-todo">
+                <!-- Javascript draws here -->
+              </div>
+            </div>
+
+            <!-- Col 2: Doing -->
+            <div class="bg-indigo-50/10 dark:bg-indigo-950/5 border border-slate-200/50 dark:border-slate-850 rounded-2xl p-4 flex flex-col space-y-3 min-h-[300px]">
+              <div class="flex items-center justify-between pb-2 border-b border-indigo-100/50 dark:border-slate-800/80 mb-1">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">In Progress</span>
+                <span id="kb-count-progress" class="px-2 py-0.5 text-[10px] font-mono leading-none bg-indigo-200/50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400 rounded-full font-bold">0</span>
+              </div>
+              <div class="flex flex-col space-y-3 flex-1" id="kb-col-progress">
+                <!-- Javascript draws here -->
+              </div>
+            </div>
+
+            <!-- Col 3: Done -->
+            <div class="bg-emerald-50/5 dark:bg-emerald-950/2 border border-slate-200/50 dark:border-slate-850 rounded-2xl p-4 flex flex-col space-y-3 min-h-[300px]">
+              <div class="flex items-center justify-between pb-2 border-b border-emerald-100/40 dark:border-slate-800/80 mb-1">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Completed tasks</span>
+                <span id="kb-count-done" class="px-2 py-0.5 text-[10px] font-mono leading-none bg-emerald-100/50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 rounded-full font-bold">0</span>
+              </div>
+              <div class="flex flex-col space-y-3 flex-1" id="kb-col-done">
+                <!-- Javascript draws here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMBEDDED WIDGET 2: CHRONOS NOTEPAD AND WIDGET 3: AURORA Canvas CHART -->
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- Widget 2: Notepad App -->
+          <div id="demo-chronos-notepad" class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+            <div class="mb-4">
+              <div class="inline-flex items-center space-x-2 py-0.5 px-2 bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900 rounded text-[10px] font-mono text-indigo-700 dark:text-indigo-400 uppercase tracking-widest font-semibold mb-2">EMBEDDED APPLICATION 02</div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Chronos Distraction-Free notepad</h3>
+              <p class="text-xs text-slate-400 dark:text-slate-500 mt-1">Type down insights or logs. Includes local file export features.</p>
+            </div>
+
+            <div class="relative mb-4 flex-1">
+              <textarea id="notepad-editor" class="w-full h-44 p-4 border border-slate-200 dark:border-slate-850 bg-slate-50 dark:bg-slate-900 text-sm rounded-xl focus:outline-hidden focus:border-indigo-400 text-slate-800 dark:text-slate-150 resize-none font-mono" placeholder="Begin jotting ideas..."></textarea>
+            </div>
+
+            <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-900/60 mt-auto">
+              <div class="flex items-center space-x-4">
+                <span class="text-xs font-mono text-slate-400">Words: <span id="notepad-words-count" class="font-bold text-slate-700 dark:text-slate-300">0</span></span>
+                <span class="text-xs font-mono text-slate-400">Chars: <span id="notepad-chars-count" class="font-bold text-slate-700 dark:text-slate-300">0</span></span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <!-- Status ticker -->
+                <span id="notepad-autosave-indicator" class="text-[10px] font-mono text-slate-400">local Draft Active</span>
+                <button id="notepad-clear-btn" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-800 bg-slate-50 hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-350 text-xs font-semibold rounded-lg cursor-pointer transition-colors">Clear</button>
+                <button id="notepad-save-btn" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-lg cursor-pointer transition-colors shadow-xs">Export .txt File </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Widget 3: Live Custom Canvas Monitor -->
+          <div id="demo-aurora-monitor" class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+            <div class="mb-4">
+              <div class="inline-flex items-center space-x-2 py-0.5 px-2 bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900 rounded text-[10px] font-mono text-indigo-700 dark:text-indigo-400 uppercase tracking-widest font-semibold mb-2">EMBEDDED APPLICATION 03</div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">Aurora Node Latency plotter</h3>
+              <p class="text-xs text-slate-400 dark:text-slate-500 mt-1">Real-time telemetry rendering drawn directly to an HTML5 Canvas coordinate frame.</p>
+            </div>
+
+            <!-- Canvas render panel -->
+            <div class="bg-slate-100/30 dark:bg-slate-900/20 border border-slate-100 dark:border-slate-900 rounded-2xl h-[140px] relative overflow-hidden flex items-center justify-center">
+              <canvas id="aurora-canvas-chart" class="w-full block"></canvas>
+            </div>
+
+            <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-900/60 mt-4">
+              <div class="flex items-center space-x-1.5 text-xs font-mono text-slate-400">
+                <span>SIM_LATENCY:</span>
+                <span id="aurora-api-rate" class="font-mono font-semibold text-indigo-600 dark:text-indigo-400">-- ms</span>
+              </div>
+              <button id="aurora-play-trigger" class="px-3.5 py-1.5 bg-slate-900 border border-slate-800 hover:bg-slate-800 dark:bg-slate-900 text-white dark:border-slate-800 text-xs font-semibold rounded-lg cursor-pointer transition-colors uppercase tracking-wider font-mono">
+                PAUSE FEED
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: CHRONOLOGICAL EXPERIENCE TIMELINE -->
+    <section id="timeline" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">CHRONOLOGY</span>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">Educational & Work Timeline</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Active historical log tracking professional milestones and achievements over time.</p>
+      </div>
+
+      <!-- Render Path in HTML / JS -->
+      <div class="max-w-3xl mx-auto border-l-2 border-indigo-150/40 dark:border-slate-900 pl-4 py-2 flex flex-col space-y-2">
+        <div id="timeline-interactive-path" class="space-y-2">
+          <!-- Populated by javascript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: CONTACT MANAGER AND INTERNAL diagnostic PANEL -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200/80 dark:border-slate-900 bg-slate-100/30 dark:bg-slate-950/20">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Side Column descriptive details -->
+        <div class="lg:col-span-5 flex flex-col space-y-6">
+          <div>
+            <span class="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">SECURE CONNECT</span>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">Let's Establish Connection</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Submit a secure memo. Your inputs will be logged inside the browser's persistent localStorage sandbox.</p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <span class="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              </span>
+              <div>
+                <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">Electronic Mail</h5>
+                <p class="text-xs text-slate-500">computerlabc@eurointernationalschool.in</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-3">
+              <span class="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+              </span>
+              <div>
+                <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">Zone Coordinates</h5>
+                <p class="text-xs text-slate-500">Universal GMT / UTC Frame</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secret developer tab toggle button -->
+          <div class="pt-6">
+            <button id="admin-tab-toggle" class="px-4 py-2 border border-slate-350 dark:border-slate-830 text-slate-600 dark:text-slate-400 bg-white/70 dark:bg-slate-900/30 text-xs font-mono rounded-lg hover:bg-slate-100 hover:text-slate-800 dark:hover:bg-slate-850 dark:hover:text-white select-none transition-colors cursor-pointer flex items-center space-x-2">
+              <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+              <span>DEVICES/MEMO ADMIN PANEL</span>
+            </button>
+            <p class="text-[10px] text-slate-400 mt-1.5 font-mono">Simulate a backend. Click to expand diagnostic inbox logs.</p>
+          </div>
+        </div>
+
+        <!-- Form Submission Panel -->
+        <div class="lg:col-span-7 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-6 sm:p-8 rounded-3xl shadow-xs">
+          <!-- Success feedback notice (Default hidden) -->
+          <div id="form-submit-success-box" class="hidden mb-6 p-4 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-250 dark:border-emerald-850 rounded-xl flex items-start space-x-3 animate-pulse">
+            <span class="text-emerald-500 font-bold text-lg leading-none mt-0.5">✓</span>
+            <div>
+              <h4 class="text-sm font-bold text-emerald-800 dark:text-emerald-400">Memo Added Successfully!</h4>
+              <p class="text-xs text-emerald-600 dark:text-emerald-500 mt-0.5 leading-relaxed">Your message has been parsed and appended cleanly to the client local logs repository. Open the admin diagnostic panel to see it instantly.</p>
+            </div>
+          </div>
+
+          <form id="contact-web-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="flex flex-col space-y-1.5">
+                <label for="form-name" class="text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider">Your Name *</label>
+                <input type="text" id="form-name" class="px-4 py-2.5 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 rounded-xl focus:outline-hidden focus:border-indigo-400 text-sm text-slate-800 dark:text-white" placeholder="Full Name..." required>
+              </div>
+              <div class="flex flex-col space-y-1.5">
+                <label for="form-email" class="text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider">Email Address *</label>
+                <input type="email" id="form-email" class="px-4 py-2.5 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 rounded-xl focus:outline-hidden focus:border-indigo-400 text-sm text-slate-800 dark:text-white" placeholder="you@domain.com" required>
+              </div>
+            </div>
+
+            <div class="flex flex-col space-y-1.5">
+              <label for="form-message" class="text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider">Your Message Memo *</label>
+              <textarea id="form-message" class="px-4 py-2.5 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 rounded-xl focus:outline-hidden focus:border-indigo-400 text-sm h-32 text-slate-800 dark:text-white resize-none" placeholder="Provide details about your query..." required></textarea>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <span id="form-draft-label" class="text-[10px] font-mono text-indigo-500 font-medium opacity-0 transition-opacity">Writing draft (Auto saved)...</span>
+              <button type="submit" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl cursor-pointer select-none transition-all shadow-md hover:shadow-lg">
+                Submit Message Memo
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- SECRET/LOCAL ADMINISTRATION SUBMISSIONS PANEL (Default Hidden toggleable) -->
+      <div id="admin-inbox-section" class="max-w-7xl mx-auto mt-12 bg-white dark:bg-slate-950 border border-dashed border-slate-350 dark:border-slate-800 rounded-3xl p-6 sm:p-8 hidden">
+        <div class="pb-4 border-b border-slate-100 dark:border-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <h4 class="text-md font-bold text-slate-900 dark:text-white flex items-center gap-1.5 font-mono">
+              <span class="h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
+              Inbox Database Console (Local Mock Sandbox)
+            </h4>
+            <p class="text-xs text-slate-401 mt-1 leading-normal">
+              A real diagnostic inbox reading from <code class="font-mono bg-slate-100 dark:bg-slate-900 text-indigo-500 px-1 py-0.5 rounded text-[11px]">localStorage</code> entries. Try submitting the form above; it will display here instantly without server networks!
+            </p>
+          </div>
+          <!-- Download Backup Logs buttons -->
+          <div class="flex items-center gap-2">
+            <input type="text" id="admin-filter-query" class="px-3 py-1.5 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-xs rounded-lg focus:outline-hidden" placeholder="Filter submissions...">
+            <button id="admin-export-btn" class="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-stone-300 border border-slate-200 dark:border-slate-700 text-xs font-mono rounded-lg hover:border-indigo-400 cursor-pointer select-none">
+              EXPORT LOGS AS JSON
+            </button>
+          </div>
+        </div>
+
+        <!-- Submission logs grid target -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="admin-logs-grid">
+          <!-- Managed dynamically via Javascript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- master FOOTER BLOCK -->
+    <footer class="bg-white dark:bg-slate-950 border-t border-slate-200/60 dark:border-slate-900/60 py-12 px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-400 font-mono tracking-wide">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <!-- Brand Info -->
+        <div class="flex items-center space-x-2 select-none h-6">
+          <span class="font-sans font-bold text-sm tracking-tight text-slate-900 dark:text-white">Lucid<span class="text-indigo-600 dark:text-indigo-400 font-medium font-sans">Pages</span></span>
+          <span class="text-slate-300 dark:text-slate-800">|</span>
+          <span>100% Client-Side Pure Static Page</span>
+        </div>
+        
+        <!-- Standard Copyright info -->
+        <p>Copyright &copy; 2026 LucidPages. Clean static assets layout. Prepared for GitHub Pages.</p>
+      </div>
+    </footer>
+
+    <!-- INTERFACE SPECIFICATIONS MODAL DIALOG (Project Details Expanded slideover) -->
+    <div id="project-specification-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/40 opacity-0 pointer-events-none transition-all duration-300 glass-effect">
+      <div class="modal-card bg-white dark:bg-slate-950 border border-slate-250 dark:border-slate-800 w-full max-w-xl rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300">
+        <!-- Modal Terminal Header bar -->
+        <div class="flex items-center justify-between border-b border-slate-150 dark:border-slate-900 px-6 py-4 bg-slate-50/50 dark:bg-slate-900/10">
+          <div>
+            <span id="modal-project-category" class="text-[10px] font-mono tracking-widest text-indigo-600 dark:text-indigo-400 uppercase font-bold">CATEGORY: UTILITIES</span>
+            <h3 id="modal-project-title" class="text-lg font-bold text-slate-900 dark:text-white">Apex Kanban Board</h3>
+          </div>
+          <!-- Close Modal triggers -->
+          <button class="h-8 w-8 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 flex items-center justify-center text-slate-400 hover:text-slate-800 dark:hover:text-white transition-all cursor-pointer" onclick="closeProjectModal()">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <!-- Description body content -->
+        <div class="p-6 space-y-4">
+          <div class="space-y-1.5">
+            <h5 class="text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider">PROJECT OBJECTIVES & VALUES</h5>
+            <p id="modal-project-fulldesc" class="text-sm text-slate-600 dark:text-slate-350 leading-relaxed">
+              A complete offline-first task board that lets you manage work status flows, customize tasks, and persist workflow updates without full stack backend servers. Ideal sandbox of vanilla web app architectures.
+            </p>
+          </div>
+
+          <div class="pt-2 border-t border-slate-100 dark:border-slate-900/60 space-y-2">
+            <h5 class="text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider">CORE INTEGRATIONS & CONTROLS</h5>
+            <ul id="modal-project-features-list" class="space-y-2">
+              <!-- Inline items loaded dynamically in Javascript -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Actions controls bottom -->
+        <div class="px-6 py-4 border-t border-slate-150 dark:border-slate-900 bg-slate-50/20 dark:bg-slate-900/10 flex justify-end space-x-3">
+          <button class="px-4 py-2 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 rounded-xl hover:bg-slate-50 text-xs font-semibold cursor-pointer transition-all" onclick="closeProjectModal()">
+            Dismiss Specs
+          </button>
+          <a href="#projects" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold cursor-pointer transition-all" onclick="closeProjectModal()">
+            Proceed To Demo
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Script Module -->
+    <script type="module" src="/src/script.js"></script>
+  </body>
+</html>
